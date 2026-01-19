@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #c3ecff, #fce7ff);
+    }
+    .app {
+      max-width: 400px;
+      margin: 20px auto;
+      background: #fff;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+    h1 { text-align: center; }
+    .card {
+      background: #f5f7ff;
+      padding: 15px;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .on { background: #4caf50; color: #fff; }
+    .off { background: #f44336; color: #fff; }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>🏠 Smart Home</h1>
+
+    <div class="card">
+      <h3>💡 Light</h3>
+      <button id="light" class="off" onclick="toggleLight()">OFF</button>
+    </div>
+
+    <div class="card">
+      <h3>🌡️ Temperature</h3>
+      <input type="range" min="16" max="30" value="22" oninput="setTemp(this.value)">
+      <p id="temp">22 °C</p>
+    </div>
+
+    <div class="card">
+      <h3>🔒 Door</h3>
+      <button id="door" class="off" onclick="toggleDoor()">LOCKED</button>
+    </div>
+  </div>
+
+  <script>
+    let lightOn = false;
+    let doorLocked = true;
+
+    function toggleLight() {
+      lightOn = !lightOn;
+      const btn = document.getElementById('light');
+      btn.textContent = lightOn ? 'ON' : 'OFF';
+      btn.className = lightOn ? 'on' : 'off';
+    }
+
+    function setTemp(v) {
+      document.getElementById('temp').textContent = v + ' °C';
+    }
+
+    function toggleDoor() {
+      doorLocked = !doorLocked;
+      const btn = document.getElementById('door');
+      btn.textContent = doorLocked ? 'LOCKED' : 'UNLOCKED';
+      btn.className = doorLocked ? 'off' : 'on';
+    }
+  </script>
+</body>
+</html>
